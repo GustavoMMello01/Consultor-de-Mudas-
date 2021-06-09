@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import com.colheita.pa.dto.especieDTO.InsertEspecie;
 import com.colheita.pa.dto.especieDTO.EspecieDTO;
 import com.colheita.pa.entities.Especie;
+import com.colheita.pa.entities.Familia;
 import com.colheita.pa.repositories.EspecieRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,9 +39,10 @@ public class EspecieService {
 
     }    
 
-    public EspecieDTO insert(InsertEspecie insertDTO) {
+    public EspecieDTO insert(InsertEspecie insertDTO, Familia familia) {
 		
         Especie entity = new Especie(insertDTO);
+        entity.setFamilia(familia);
         entity = repo.save(entity);
 
         return new EspecieDTO(entity);

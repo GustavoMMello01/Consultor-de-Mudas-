@@ -3,6 +3,7 @@ package com.colheita.pa.dto.especieDTO;
 import java.util.List;
 
 import com.colheita.pa.entities.Especie;
+import com.colheita.pa.entities.Familia;
 import com.colheita.pa.entities.Muda;
 
 public class EspecieDTO {
@@ -10,7 +11,7 @@ public class EspecieDTO {
     private long id;
     private String nameEspecie;
     private List<Muda> mudas;
-
+    private Familia familia;
     
     public EspecieDTO() {
     }
@@ -24,6 +25,8 @@ public class EspecieDTO {
     public EspecieDTO(Especie especie) {
         this.nameEspecie = especie.getNameEspecie();
         this.mudas = especie.getMudas();
+        this.familia = especie.getFamilia();
+        this.id = especie.getId();
     }
 
     public long getId() {
@@ -44,5 +47,13 @@ public class EspecieDTO {
     public void setMudas(List<Muda> mudas) {
         this.mudas = mudas;
     }
+
+	public Familia getFamilia() {
+		return familia;
+	}
+
+	public void setFamilia(Familia familia) {
+		this.familia = familia;
+	}
     
 }

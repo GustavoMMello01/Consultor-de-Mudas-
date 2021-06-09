@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import com.colheita.pa.dto.especieDTO.InsertEspecie;
 
@@ -30,6 +31,9 @@ public class Especie implements Serializable{
                 inverseJoinColumns={@JoinColumn(name="Especie_ID")})
     private List<Muda> mudas;
     
+    
+    @ManyToOne
+    private Familia familia;
 
     public Especie(long id, String nameEspecie, List<Muda> mudas) {
         this.id = id;
@@ -41,6 +45,7 @@ public class Especie implements Serializable{
     }
 
     public Especie(InsertEspecie insertDTO) {
+    	this.setNameEspecie(insertDTO.getNameEspecie());
     }
 
     public long getId() {
@@ -66,5 +71,15 @@ public class Especie implements Serializable{
     public void setMudas(List<Muda> mudas) {
         this.mudas = mudas;
     }
+
+	public Familia getFamilia() {
+		return familia;
+	}
+
+	public void setFamilia(Familia familia) {
+		this.familia = familia;
+	}
+    
+    
 
 }

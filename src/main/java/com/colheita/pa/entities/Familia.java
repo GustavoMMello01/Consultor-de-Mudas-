@@ -24,10 +24,10 @@ public class Familia implements Serializable{
     private String nameFamilia;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name="Muda_Familia",
-                joinColumns={@JoinColumn(name="MUDA_ID")},
+    @JoinTable(name="Especie_Familia",
+                joinColumns={@JoinColumn(name="ESPECIE_ID")},
                 inverseJoinColumns={@JoinColumn(name="FAMILIA_ID")})
-    private List<Muda> mudas;
+    private List<Especie> especies;
 
     public Familia(long id, String nameFamilia) {
         this.id = id;
@@ -38,7 +38,17 @@ public class Familia implements Serializable{
 
     }
 
-    public Familia(InsertFamiliaDTO insertDTO){
+    
+    
+    public List<Especie> getEspecies() {
+		return especies;
+	}
+
+	public void setEspecies(List<Especie> especies) {
+		this.especies = especies;
+	}
+
+	public Familia(InsertFamiliaDTO insertDTO){
         this.nameFamilia = insertDTO.getNameFamilia();
     }    
 

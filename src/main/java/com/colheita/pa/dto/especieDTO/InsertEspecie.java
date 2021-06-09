@@ -9,7 +9,8 @@ public class InsertEspecie {
     private long id;
     private String nameEspecie;
     private List<Muda> mudas;
-
+    private long idFamilia;
+    
     public InsertEspecie() {
     }
 
@@ -38,5 +39,16 @@ public class InsertEspecie {
     public void setMudas(List<Muda> mudas) {
         this.mudas = mudas;
     }
+
+
+	public long getIdFamilia() {
+		return idFamilia;
+	}
+
+
+	public void setIdFamilia(long idFamilia) {
+		this.idFamilia = idFamilia;
+	}
+    
 
 }
