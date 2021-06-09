@@ -12,6 +12,7 @@ public class InsertMudaDTO {
     private String bioma;
     private boolean frutifera;
     private String especie;
+    private String familia;
     private String nomePopular1;
     private String nomePopular2;
     private String nomeCientifico;
@@ -88,5 +89,12 @@ public class InsertMudaDTO {
         this.nomeCientifico = nomeCientifico;
     }
 
+    public String getFamilia() {
+        return familia;
+    }
+
+    public void setFamilia(String familia) {
+        this.familia = familia;
+    }
     
 }

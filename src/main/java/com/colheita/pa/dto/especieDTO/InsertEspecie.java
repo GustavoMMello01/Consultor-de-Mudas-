@@ -1,6 +1,5 @@
 package com.colheita.pa.dto.especieDTO;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.colheita.pa.entities.Muda;

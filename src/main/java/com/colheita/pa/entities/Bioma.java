@@ -27,9 +27,9 @@ public class Bioma implements Serializable{
 
     	 
 	 @ManyToMany(cascade = CascadeType.ALL)
-	 @JoinTable(name="Muda_Solo",
+	 @JoinTable(name="Muda_Bioma",
 	             joinColumns={@JoinColumn(name="MUDA_ID")},
-	             inverseJoinColumns={@JoinColumn(name="Solo_ID")})
+	             inverseJoinColumns={@JoinColumn(name="BIOMA_ID")})
 	 //@JsonBackReference
 	 private List<Muda> mudas;
 

@@ -5,12 +5,9 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.colheita.pa.dto.especieDTO.InsertEspecie;
-import com.colheita.pa.dto.especieDTO.InsertEspecie;
-import com.colheita.pa.dto.soloDTO.SoloDTO;
 import com.colheita.pa.dto.especieDTO.EspecieDTO;
 import com.colheita.pa.entities.Especie;
 import com.colheita.pa.repositories.EspecieRepository;
-import com.colheita.pa.repositories.RegiaoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;

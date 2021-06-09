@@ -12,7 +12,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import com.colheita.pa.dto.especieDTO.InsertEspecie;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.JoinColumn;
 
@@ -26,12 +25,10 @@ public class Especie implements Serializable{
     private String nameEspecie;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name="Especie_Regiao",
+    @JoinTable(name="Especie_Muda",
                 joinColumns={@JoinColumn(name="MUDA_ID")},
                 inverseJoinColumns={@JoinColumn(name="Especie_ID")})
-    @JsonBackReference
     private List<Muda> mudas;
-
     
 
     public Especie(long id, String nameEspecie, List<Muda> mudas) {

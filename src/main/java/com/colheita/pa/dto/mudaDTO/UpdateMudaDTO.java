@@ -65,6 +65,10 @@ public class UpdateMudaDTO {
     public Object getEspecie() {
         return null;
     }
+
+	public Object getFamilia(){
+		return null;
+	}
     
     
     
