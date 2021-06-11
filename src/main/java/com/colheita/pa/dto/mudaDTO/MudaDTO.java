@@ -7,6 +7,7 @@ import com.colheita.pa.entities.Muda;
 import com.colheita.pa.entities.Regiao;
 import com.colheita.pa.entities.Solo;
 import com.colheita.pa.entities.Bioma;
+import com.colheita.pa.entities.Especie;
 
 public class MudaDTO {
 
@@ -15,6 +16,8 @@ public class MudaDTO {
     private String nomeMuda;
     private List<Regiao> regioes = new ArrayList<>();
 	private List<Bioma> biomas = new ArrayList<>();
+	private List<Solo> solos = new ArrayList<>();
+	private Especie especie;
 
     public MudaDTO(long id, boolean frutifera, String nomeMuda, ArrayList<Regiao> regioes, ArrayList<Bioma> biomas) {
 		this.id = id;
@@ -33,6 +36,8 @@ public class MudaDTO {
 		this.nomeMuda = muda.getNomeMuda();
 		this.regioes = muda.getRegioes();
 		this.biomas = muda.getBiomas();
+		this.solos = muda.getSolos();
+		this.especie = muda.getEspecie();
 	}
 
 	public MudaDTO(Solo solo) {
@@ -80,6 +85,22 @@ public class MudaDTO {
 
 	public void setBiomas(List<Bioma> biomas) {
 		this.biomas = biomas;
+	}
+
+	public List<Solo> getSolos() {
+		return solos;
+	}
+
+	public void setSolos(List<Solo> solos) {
+		this.solos = solos;
+	}
+
+	public Especie getEspecie() {
+		return especie;
+	}
+
+	public void setEspecie(Especie especie) {
+		this.especie = especie;
 	}
 
 	

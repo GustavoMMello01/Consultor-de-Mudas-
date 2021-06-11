@@ -16,8 +16,56 @@ public class InsertMudaDTO {
     private String nomePopular1;
     private String nomePopular2;
     private String nomeCientifico;
+    private long idSolo;
+    private long idRegiao;
+    private long idEspecie;
+    private long idbioma;
+    private String nomeMuda;
     
-    public long getId() {
+    
+    
+    
+    public String getNomeMuda() {
+		return nomeMuda;
+	}
+
+	public void setNomeMuda(String nomeMuda) {
+		this.nomeMuda = nomeMuda;
+	}
+
+	public long getIdSolo() {
+		return idSolo;
+	}
+
+	public void setIdSolo(long idSolo) {
+		this.idSolo = idSolo;
+	}
+
+	public long getIdRegiao() {
+		return idRegiao;
+	}
+
+	public void setIdRegiao(long idRegiao) {
+		this.idRegiao = idRegiao;
+	}
+
+	public long getIdEspecie() {
+		return idEspecie;
+	}
+
+	public void setIdEspecie(long idEspecie) {
+		this.idEspecie = idEspecie;
+	}
+
+	public long getIdbioma() {
+		return idbioma;
+	}
+
+	public void setIdbioma(long idbioma) {
+		this.idbioma = idbioma;
+	}
+
+	public long getId() {
         return id;
     }
 

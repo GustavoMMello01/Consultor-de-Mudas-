@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.colheita.pa.dto.especieDTO.InsertEspecie;
 
@@ -25,7 +26,7 @@ public class Especie implements Serializable{
 
     private String nameEspecie;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name="Especie_Muda",
                 joinColumns={@JoinColumn(name="MUDA_ID")},
                 inverseJoinColumns={@JoinColumn(name="Especie_ID")})

@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.colheita.pa.dto.mudaDTO.InsertMudaDTO;
@@ -31,20 +32,44 @@ public class Muda implements Serializable {
     //mapeamento de entidades/tabelas
     @ManyToMany(mappedBy="mudas", cascade = CascadeType.ALL)
     //@JsonBackReference
-    private List<Regiao> regioes;
+    private List<Regiao> regioes = new ArrayList<>();
 
     @ManyToMany(mappedBy="mudas", cascade = CascadeType.ALL)
     //@JsonBackReference
-    private List<Bioma> biomas;
+    private List<Bioma> biomas = new ArrayList<>();
 
+    @ManyToMany(mappedBy="mudas", cascade = CascadeType.ALL)
+    //@JsonBackReference
+    private List<Solo> solos = new ArrayList<>();
+    
+    @ManyToOne
+    private Especie especie;
 
+    
 
-    public Muda() {
+    public Especie getEspecie() {
+		return especie;
+	}
+
+	public void setEspecie(Especie especie) {
+		this.especie = especie;
+	}
+
+	public List<Solo> getSolos() {
+		return solos;
+	}
+
+	public void setSolos(List<Solo> solos) {
+		this.solos = solos;
+	}
+
+	public Muda() {
     	super();
     }
 
     public Muda(InsertMudaDTO insertDTO) {
-        
+        this.frutifera = insertDTO.isFrutifera();
+        this.nomeMuda = insertDTO.getNomeMuda();
     }
 
 	@Override

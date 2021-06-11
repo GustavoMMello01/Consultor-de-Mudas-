@@ -10,9 +10,17 @@ import javax.persistence.EntityNotFoundException;
 import com.colheita.pa.dto.mudaDTO.InsertMudaDTO;
 import com.colheita.pa.dto.mudaDTO.MudaDTO;
 import com.colheita.pa.dto.mudaDTO.UpdateMudaDTO;
+import com.colheita.pa.entities.Bioma;
+import com.colheita.pa.entities.Especie;
+import com.colheita.pa.entities.Familia;
 import com.colheita.pa.entities.Muda;
+import com.colheita.pa.entities.Regiao;
+import com.colheita.pa.entities.Solo;
+import com.colheita.pa.repositories.BiomaRepository;
+import com.colheita.pa.repositories.EspecieRepository;
 import com.colheita.pa.repositories.MudaRepository;
-
+import com.colheita.pa.repositories.RegiaoRepository;
+import com.colheita.pa.repositories.SoloRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -25,6 +33,14 @@ public class MudaService {
     
     @Autowired
     private MudaRepository repo;
+    @Autowired
+    private BiomaRepository biomaRepo;
+    @Autowired
+    private EspecieRepository especieRepo;
+    @Autowired
+    private RegiaoRepository regiaoRepo;
+    @Autowired
+    private SoloRepository soloRepo;
 
     // devolve todas as mudas
     public List<MudaDTO> getMudas(){
@@ -46,8 +62,22 @@ public class MudaService {
     }
 
     public MudaDTO insert(InsertMudaDTO insertDTO){
+    	
+    	long idBioma = insertDTO.getIdbioma();
+    	long idEspecie = insertDTO.getIdEspecie();
+    	long idRegiao = insertDTO.getIdRegiao();
+    	long idSolo = insertDTO.getIdSolo();
+    	
+    	Bioma bioma = biomaRepo.findById(idBioma).get();
+    	Especie especie = especieRepo.findById(idEspecie).get();
+    	Regiao regiao = regiaoRepo.findById(idRegiao).get();
+    	Solo solo = soloRepo.findById(idSolo).get();
         
         Muda entity = new Muda(insertDTO);
+        entity.getBiomas().add(bioma);
+        entity.getRegioes().add(regiao);
+        entity.getSolos().add(solo);
+        entity.setEspecie(especie);
         entity = repo.save(entity);
 
         return new MudaDTO(entity);
@@ -90,16 +120,7 @@ public class MudaService {
 
     // metodo que tramsforma Muda em MudaDTO
     private List<MudaDTO> toDTOList(List<Muda> list){
-        //List<MudaDTO> mudaListDTO = new ArrayList<>();
-
-        /*for(Muda c: list){
-            mudaListDTO.add(new MudaDTO(c.getId(), c.getRegiao(), c.getSolo(), c.getBioma(), 
-                                        c.getEspecie(), c.getNomePopular1(), c.getNomePopular2(), 
-                                        c.getNomeCientifico(), c.isFrutifera()));
-        }*/
-
         return list.stream().map(MudaDTO::new).collect(Collectors.toList());
-        //return mudaListDTO;
     }
 
 }

@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import com.colheita.pa.dto.familiaDTO.InsertFamiliaDTO;
 
@@ -23,7 +24,7 @@ public class Familia implements Serializable{
     private long id;
     private String nameFamilia;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name="Especie_Familia",
                 joinColumns={@JoinColumn(name="ESPECIE_ID")},
                 inverseJoinColumns={@JoinColumn(name="FAMILIA_ID")})
